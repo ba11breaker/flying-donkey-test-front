@@ -1,0 +1,19 @@
+.outer-layout {
+    width: 100%;
+    height: 100%;
+}
+
+.head-config {
+    width: '100%';
+    height: 100px;
+}
+
+.uploader {
+    height: calc(100% - 200px);
+    width: 100%;
+    padding: 0 30%;
+}
+
+.hidden {
+    display: none;
+}
