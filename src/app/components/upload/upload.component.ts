@@ -1,7 +1,6 @@
 import {  HttpErrorResponse, HttpEventType,  HttpResponse } from '@angular/common/http';
 import { Component, OnInit,  AfterViewInit, HostListener } from '@angular/core';
 import { FileService } from 'src/app/services/file.service';
-import { NzMessageService } from 'ng-zorro-antd/message';
 import {  NzNotificationService } from 'ng-zorro-antd/notification';
 
 @Component({
@@ -25,7 +24,6 @@ export class UploadComponent implements OnInit,AfterViewInit {
 
   constructor(
     private fileService: FileService,
-    private nzMessageService: NzMessageService,
     private notification: NzNotificationService
   ) {
     
