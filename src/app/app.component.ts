@@ -14,8 +14,4 @@ export class AppComponent {
   ) {
 
   }
-
-  changeRoute(evt) {
-    console.log(evt);
-  }
 }

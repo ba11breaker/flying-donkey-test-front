@@ -1,0 +1,24 @@
+.outer-layout {
+    width: 100%;
+    height: 100%;
+    padding: 0 5px;
+    .table-config {
+        width: 100%;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        nz-select {
+            width: 140px;
+            margin-right: 10px;
+        }
+        name-input {
+            width: 650px;
+        }
+        button {
+            margin-left: 10px;
+        }
+    }
+    nz-table {
+        height: calc(100% - 80px);
+    }
+}

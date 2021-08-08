@@ -1,1 +1,46 @@
-<p>files works!</p>
+<div class="outer-layout">
+    <div class="table-config">
+      <nz-select [(ngModel)]="type" [ngModelOptions]="{standalone: true}"
+        (ngModelChange)="search($event)"
+      >
+        <nz-option *ngFor="let type of generalTypes"
+          [nzValue]="type" [nzLabel]="type"
+        ></nz-option>
+      </nz-select>
+      <div class="name-input" >
+        <nz-input-group  nzSearch [nzSuffix]="suffixIconSearch" >
+        <input #fileNameInput nz-input placeholder="File name" [(ngModel)]="name" />
+        </nz-input-group>
+      </div>
+      <ng-template #suffixIconSearch>
+        <i nz-icon nzType="search"></i>
+      </ng-template>
+      <button nz-button nzShape="circle" nzSize="small" [nzLoading]="tableLoading"
+        (click)="search($event)"
+      >
+        <i nz-icon nzType="reload" nzTheme="outline"></i>
+      </button>
+    </div>
+    <nz-table #headerTable [nzLoading]="tableLoading" [nzPageSize]="5" #basicTable [nzData]="files" [nzScroll]="{ y: '250px' }">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Size</th>
+            <th>Type</th>
+            <th>Upload Time</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let file of files">
+            <td>{{file.originalName}}</td>
+            <td>{{sizeFormatter(file.size)}}</td>
+            <td>{{file.type}}</td>
+            <td>{{file.timeStamp}}</td>
+            <td>
+              <a target="_blank" [href]="file.url">View</a>
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+</div>

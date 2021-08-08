@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpEventType, HttpRequest, HttpResponse
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, HostListener, OnChanges } from '@angular/core';
 import { FileService } from 'src/app/services/file.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import {  NzNotificationService } from 'ng-zorro-antd/notification';
 
 @Component({
   selector: 'app-upload',
@@ -24,7 +25,8 @@ export class UploadComponent implements OnInit,AfterViewInit {
 
   constructor(
     private fileService: FileService,
-    private nzMessageService: NzMessageService
+    private nzMessageService: NzMessageService,
+    private notification: NzNotificationService
   ) {
     
   }
@@ -67,7 +69,12 @@ export class UploadComponent implements OnInit,AfterViewInit {
       this.loading = false;
       this.fileService.setUploading(false);
       const {response} = event.file;
-      this.nzMessageService.create('success', response.message);
+      this.notification.create(
+        'success', 
+        'Success', 
+        response.message,
+        {nzDuration: 0}
+      );
     } else if (event.type === 'error') {
       // face error during uploading
       this.loading = false;
@@ -75,7 +82,12 @@ export class UploadComponent implements OnInit,AfterViewInit {
       if (event.file.error instanceof HttpErrorResponse) {
         const {error} = event.file.error;
         if (error.message) {
-          this.nzMessageService.create('error', error.message);
+          this.notification.create(
+            'error', 
+            'Failed', 
+            error.message,
+            {nzDuration: 0}
+          );
         }
       }
     }

@@ -11,7 +11,11 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzSliderModule } from 'ng-zorro-antd/slider';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzMessageModule } from 'ng-zorro-antd/message';
-
+import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzNotificationModule } from 'ng-zorro-antd/notification';
 
 @NgModule({
   exports: [
@@ -23,7 +27,12 @@ import { NzMessageModule } from 'ng-zorro-antd/message';
     NzFormModule,
     NzSliderModule,
     NzSpinModule,
-    NzMessageModule
+    NzMessageModule,
+    NzTableModule,
+    NzInputModule,
+    NzIconModule,
+    NzButtonModule,
+    NzNotificationModule
   ],
   providers: [
   ]

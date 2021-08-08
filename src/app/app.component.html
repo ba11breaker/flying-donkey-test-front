@@ -7,8 +7,8 @@
   <nz-content class="outer-content">
     <nz-layout class="inner-layout">
       <nz-sider nzWidth="200px">
-        <ul nz-menu class="sider-menu" (nzClick)="changeRoute($event)">
-          <li nz-menu-item nzSelected>
+        <ul nz-menu class="sider-menu">
+          <li nz-menu-item>
             <a [routerLink]="['/','upload']">Upload</a>
           </li>
           <li nz-menu-item [nzDisabled]="fileService.uploading">
