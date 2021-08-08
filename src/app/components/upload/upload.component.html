@@ -1,21 +1,43 @@
 <div class="outer-layout">
     <div class="head-config">
-
+      <div class="head-config-selection">
+        <form nz-form>
+          <nz-form-item>
+            <nz-form-label [nzSpan]="6">File Type:*</nz-form-label>
+            <nz-form-control [nzSpan]="18">
+              <nz-select [(ngModel)]="allowedType" [ngModelOptions]="{standalone: true}">
+                <nz-option *ngFor="let type of generalTypes"
+                  [nzValue]="type" [nzLabel]="type"
+                ></nz-option>
+              </nz-select>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSpan]="6">File Size:*</nz-form-label>
+            <nz-form-control [nzSpan]="18">
+              <nz-slider [nzMin]="0" [nzMax]="10485760" [nzTipFormatter]="sliderTipFormatter"
+              [(ngModel)]="allowedSize" [ngModelOptions]="{standalone: true}"></nz-slider>
+            </nz-form-control>
+          </nz-form-item>
+        </form>
+      </div>
     </div>
+    <nz-spin [nzSpinning]="loading" nzSize="large">
     <div class="uploader">
     <nz-upload
       nzType="drag"
-      (nzAction)="baseUrl"
+      nzAction="#"
       (nzChange)="handleChange($event)"
-      [nzCustomRequest]="request"
+      [nzCustomRequest]="requestUpload"
     >
       <p class="ant-upload-drag-icon">
         <i nz-icon nzType="inbox"></i>
       </p>
       <p class="ant-upload-text">Click or drag file to this area to upload</p>
       <p class="ant-upload-hint">
-        Support for a single or bulk upload. Strictly prohibit from uploading company data or other band files
+        Support for a single upload.
       </p>
     </nz-upload>
     </div>
+  </nz-spin>
 </div>
