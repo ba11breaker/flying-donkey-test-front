@@ -9,11 +9,16 @@ export class FileService {
 
   baseUrl = environment.baseUrl;
   generalTypes = [];
-  
+  uploading = false;
+
   constructor(
     private http: HttpClient
   ) {
     
+  }
+
+  setUploading(uploading) {
+    this.uploading = uploading;
   }
 
   fetchGeneralTypes() {

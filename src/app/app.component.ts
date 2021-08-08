@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FileService } from './services/file.service';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  constructor(
+    public fileService: FileService
+  ) {
+
+  }
 
   changeRoute(evt) {
     console.log(evt);

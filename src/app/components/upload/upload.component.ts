@@ -1,5 +1,5 @@
 import { HttpClient, HttpErrorResponse, HttpEventType, HttpRequest, HttpResponse } from '@angular/common/http';
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, HostListener, OnChanges } from '@angular/core';
 import { FileService } from 'src/app/services/file.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
@@ -14,6 +14,13 @@ export class UploadComponent implements OnInit,AfterViewInit {
   generalTypes = [];
   allowedType = null;
   allowedSize = 5000000;
+
+  @HostListener('window:beforeunload')
+  alertWhenLoading(event) {
+    if (this.loading) {
+      (event || window.event).returnValue = "Your upload hasn't been completed. Are you sure to leave?"
+    }
+  }
 
   constructor(
     private fileService: FileService,
@@ -52,13 +59,19 @@ export class UploadComponent implements OnInit,AfterViewInit {
 
   handleChange(event) {
     if (event.type === 'start') {
+      // start uploading
       this.loading = true;
+      this.fileService.setUploading(true);
     } else if (event.type === 'success') {
+      // complete uploading successfully
       this.loading = false;
+      this.fileService.setUploading(false);
       const {response} = event.file;
       this.nzMessageService.create('success', response.message);
     } else if (event.type === 'error') {
+      // face error during uploading
       this.loading = false;
+      this.fileService.setUploading(false);
       if (event.file.error instanceof HttpErrorResponse) {
         const {error} = event.file.error;
         if (error.message) {
@@ -66,7 +79,6 @@ export class UploadComponent implements OnInit,AfterViewInit {
         }
       }
     }
-
   }
 
   requestUpload = (item) => {
