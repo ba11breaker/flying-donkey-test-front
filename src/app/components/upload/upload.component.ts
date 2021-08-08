@@ -1,5 +1,5 @@
-import { HttpClient, HttpErrorResponse, HttpEventType, HttpRequest, HttpResponse } from '@angular/common/http';
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, HostListener, OnChanges } from '@angular/core';
+import {  HttpErrorResponse, HttpEventType,  HttpResponse } from '@angular/common/http';
+import { Component, OnInit,  AfterViewInit, HostListener } from '@angular/core';
 import { FileService } from 'src/app/services/file.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import {  NzNotificationService } from 'ng-zorro-antd/notification';
