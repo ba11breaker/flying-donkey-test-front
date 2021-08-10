@@ -44,6 +44,9 @@ export class FilesComponent implements OnInit, AfterViewInit {
   }
 
   sizeFormatter(number) {
+    if (number < 0) {
+      return `0 bytes`;
+    }
     if (number < 1024) {
       return `${number} bytes`;
     }

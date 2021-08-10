@@ -1,7 +1,6 @@
 import { HttpClient, HttpParams, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { URLSearchParams } from 'url';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +12,7 @@ export class FileService {
   uploading = false;
 
   constructor(
-    private http: HttpClient
+    public http: HttpClient
   ) {
     
   }
@@ -32,6 +31,7 @@ export class FileService {
     formData.append('file', item.file as any);
     formData.append('allowedType', allowedType);
     formData.append('allowedSize', `${allowedSize}`);
+    formData.append('time', new Date().toString());
     const req = new HttpRequest('POST', `${this.baseUrl}/files/upload`, formData, {
       reportProgress: true,
       withCredentials: true

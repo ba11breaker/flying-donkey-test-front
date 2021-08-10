@@ -11,10 +11,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { NzLayoutModule } from 'ng-zorro-antd/layout';
-import { NzTypographyModule } from 'ng-zorro-antd/typography';
-import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
-
 import { UploadComponent } from './components/upload/upload.component';
 import { AntdModule } from './ng-zorro-antd.module';
 import { FilesComponent } from './components/files/files.component';
@@ -37,7 +33,7 @@ registerLocaleData(en);
     BrowserAnimationsModule,
     AntdModule
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [{ provide: NZ_I18N, useValue: en_US }, HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
