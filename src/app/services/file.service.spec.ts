@@ -37,22 +37,22 @@ describe('FileService', () => {
     });
   });
 
-  // it('upload file test.text', (done: DoneFn) => {
-  //   const item = {file: new File([], 'test.text', {type: 'text/plain'})};
-  //   service.requestUploadFile(item, 'text', 10).subscribe(response => {
-  //     if (response instanceof HttpResponse) {
-  //       expect(response.ok).toBe(true);
-  //       expect(response.body).toBeTruthy();
-  //       expect(response.body['message']).toEqual('upload a new file test.text successfully!');
-  //       expect(response.body['file']).toBeTruthy();
-  //       expect(response.body['file'].generalType).toEqual('text');
-  //     }
-  //     done();
-  //   }, error => {
-  //     expect(error).toBeTruthy();
-  //     done();
-  //   })
-  // });
+  it('upload file test.text', (done: DoneFn) => {
+    const item = {file: new File([], 'test.text', {type: 'text/plain'})};
+    service.requestUploadFile(item, 'text', 10).subscribe(response => {
+      if (response instanceof HttpResponse) {
+        expect(response.ok).toBe(true);
+        expect(response.body).toBeTruthy();
+        expect(response.body['message']).toEqual('upload a new file test.text successfully!');
+        expect(response.body['file']).toBeTruthy();
+        expect(response.body['file'].generalType).toEqual('text');
+      }
+      done();
+    }, error => {
+      expect(error).toBeTruthy();
+      done();
+    })
+  });
 
   it('upload file test.text with wrong type application', (done: DoneFn) => {
     const item = {file: new File([], 'test.text', {type: 'text/plain'})};
