@@ -38,7 +38,7 @@ describe('FileService', () => {
   });
 
   it('upload file test.text', (done: DoneFn) => {
-    const item = {file: new File([], 'test.text', {type: 'text/plain'})};
+    const item = {file: new File([], 'test.txt', {type: 'text/plain'})};
     service.requestUploadFile(item, 'text', 10).subscribe(response => {
       if (response instanceof HttpResponse) {
         expect(response.ok).toBe(true);
@@ -55,7 +55,7 @@ describe('FileService', () => {
   });
 
   it('upload file test.text with wrong type application', (done: DoneFn) => {
-    const item = {file: new File([], 'test.text', {type: 'text/plain'})};
+    const item = {file: new File([], 'test.txt', {type: 'text/plain'})};
     service.requestUploadFile(item, 'application', 10).subscribe(response => {
       expect(response).toBeTruthy();
       done()
